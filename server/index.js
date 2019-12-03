@@ -30,22 +30,9 @@ app.get('/favicon.ico', (req, res, next) => {
     return res.sendStatus(204);
 });
 
-// app.use(async(req, res, next) => {
-//     try {
-//         const courses = await courseRegistrationService.getData();
-//         return courses;
-//     } catch (err) {
-//         return next(err);
-//     }
-// })
-
 app.use('/', routes({
     courseRegistrationService
 }));
-
-// app.use((req, res, next) => {
-//     return next(createError(404, 'Page not found'));
-// });
 
 // renders error page
 app.use((req, res, next) => {
