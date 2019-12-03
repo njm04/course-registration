@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+// const createError = require('http-errors');
 const path = require("path");
 var exphbs  = require('express-handlebars');
 const configs = require("./config");
@@ -41,6 +42,15 @@ app.get('/favicon.ico', (req, res, next) => {
 app.use('/', routes({
     courseRegistrationService
 }));
+
+// app.use((req, res, next) => {
+//     return next(createError(404, 'Page not found'));
+// });
+
+// renders error page
+app.use((req, res, next) => {
+    return res.render('error');
+});
 
 app.listen(3006, () => {
     console.log("Listening to port 3006");
